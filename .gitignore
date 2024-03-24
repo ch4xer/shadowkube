@@ -1,0 +1,10 @@
+rules.json
+config.json
+shadowkube
+falco.log
+falco_exp.log
+Session.vim
+log/
+secrets/
+main_test.go
+config.json
