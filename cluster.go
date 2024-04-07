@@ -70,7 +70,6 @@ func (c *Cluster) getServicesIP() []string {
 	return result
 }
 
-// NOTE: no use
 func (c *Cluster) svcIP(name string) []string {
 	service, err := c.kubeCli.CoreV1().Services("default").Get(context.TODO(), name, metav1.GetOptions{})
 	if err != nil {

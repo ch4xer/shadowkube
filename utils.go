@@ -30,7 +30,7 @@ func logConsole(format string, args ...interface{}) {
 	} else {
 		s = format
 	}
-	AppLog.WriteString(s + "\n")
+	_, _ = AppLog.WriteString(s + "\n")
 	log.Printf("%s", s)
 }
 
@@ -44,7 +44,7 @@ func logInfo(format string, args ...interface{}) {
 	} else {
 		s = format
 	}
-	AppLog.WriteString(s + "\n")
+	_, _ = AppLog.WriteString(s + "\n")
 	log.Printf("%s", s)
 }
 
@@ -52,7 +52,7 @@ func logAll(behavior *Behavior) {
 	if !LogInit {
 		panic("Logger not initialized")
 	}
-	AllLog.WriteString(behavior.Output + "\n")
+	_, _ = AllLog.WriteString(behavior.Output + "\n")
 }
 
 func logAbnormal(behavior *Behavior) {
@@ -62,7 +62,7 @@ func logAbnormal(behavior *Behavior) {
 	if strings.Contains(behavior.Output, "python") {
 		return
 	}
-	AbnormalLog.WriteString(behavior.Output + "\n")
+	_, _ = AbnormalLog.WriteString(behavior.Output + "\n")
 }
 
 func prsDst(conn string) string {

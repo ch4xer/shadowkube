@@ -13,6 +13,7 @@ import (
 type Node struct {
 	Host              string `json:"host"`
 	IP                string `json:"ip"`
+	PASS			  string `json:"pass"`
 	victimContainer   string
 	victimContainerID string
 	converted         bool
@@ -29,7 +30,7 @@ func (n *Node) exec(cmd string) (string, error) {
 		User:            "root",
 		HostKeyCallback: ssh.InsecureIgnoreHostKey(),
 		Auth: []ssh.AuthMethod{
-			ssh.Password("toor"),
+			ssh.Password(n.PASS),
 		},
 	}
 
@@ -99,7 +100,7 @@ func (n *Node) upload(src, dst string) {
 	sshConf := &ssh.ClientConfig{
 		User: "root",
 		Auth: []ssh.AuthMethod{
-			ssh.Password("toor"),
+			ssh.Password(n.PASS),
 		},
 		HostKeyCallback: ssh.InsecureIgnoreHostKey(),
 	}
