@@ -2,7 +2,7 @@
 
 ## Prerequirement
 
-1. Prepare two Kubernetes cluster, for convenient, both clusters were setup with virtual machines of VirtualBox. note all the ssh password should be `toor`.
+1. Prepare two Kubernetes cluster, for convenient, both clusters were setup with virtual machines of VirtualBox.
 2. install falco to all nodes of both clusters
 3. enable falco's grpc feature, and generate openssl certificates for all nodes and host running the code, see [falco-grpc](https://falco.org/docs/grpc/grpc-config/)
 4. open `config.json` and change nodes information in `production` and `shadow` to the corresponding hostname of targeted clusters, change `cert`, `key` and `ca` to the corresponding path of falco certificates in the host.
