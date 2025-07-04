@@ -169,7 +169,6 @@ func (d *Detector) findRuleByName(origin string) *Rule {
 	return nil
 }
 
-// Update update the ruleset
 func (d *Detector) update(b *Behavior) {
 	r := d.findRuleByName(b.Origin)
 	if r == nil {
@@ -179,20 +178,20 @@ func (d *Detector) update(b *Behavior) {
 	}
 	switch b.Class {
 	case "exec":
-		if r.updExec(b.Object) {
+		if r.updateExec(b.Object) {
 			// log.Printf("Update Exec rule: %s", behavior.Object)
 			logInfo("Update Exec rule: %s", b)
 		}
 	case "read":
-		if r.updRd(b.Object) {
+		if r.updateRead(b.Object) {
 			logInfo("Update Read rule: %s", b)
 		}
 	case "write":
-		if r.updWrt(b.Object) {
+		if r.updateWrite(b.Object) {
 			logInfo("Update Write rule: %s", b)
 		}
 	case "conn":
-		if r.updConn(b.Object) {
+		if r.updateConnect(b.Object) {
 			logInfo("Update Conn rule: %s", b)
 		}
 	}

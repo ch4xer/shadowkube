@@ -8,3 +8,4 @@ log/
 secrets/
 main_test.go
 config.json
+certs/

@@ -10,10 +10,12 @@ require (
 )
 
 require (
+	github.com/agnivade/levenshtein v1.1.1 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/go-logr/logr v0.2.0 // indirect
 	github.com/google/gofuzz v1.1.0 // indirect
 	github.com/googleapis/gnostic v0.4.1 // indirect
+	github.com/hbollon/go-edlib v1.6.0 // indirect
 	github.com/imdario/mergo v0.3.5 // indirect
 	github.com/json-iterator/go v1.1.10 // indirect
 	github.com/kr/fs v0.1.0 // indirect
@@ -34,6 +36,7 @@ require (
 
 require (
 	github.com/gogo/protobuf v1.3.2
+	github.com/golang/glog v1.2.1
 	github.com/golang/protobuf v1.5.3 // indirect
 	github.com/muesli/clusters v0.0.0-20200529215643-2700303c1762
 	github.com/muesli/kmeans v0.3.1

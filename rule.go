@@ -13,29 +13,29 @@ type Rule struct {
 	Conn  []string            `json:"conn"`
 }
 
-func (r *Rule) updWrt(file string) bool {
+func (r *Rule) updateWrite(file string) bool {
 	for _, s := range r.Write {
 		if strings.Contains(file, s) {
 			return false
 		}
 	}
 	ifupdated := false
-	r.Write, ifupdated = fdLongPfx(r.Write, file)
+	r.Write, ifupdated = findLongestPrefix(r.Write, file)
 	return ifupdated
 }
 
-func (r *Rule) updRd(file string) bool {
+func (r *Rule) updateRead(file string) bool {
 	for _, s := range r.Read {
 		if strings.Contains(file, s) {
 			return false
 		}
 	}
 	ifupdated := false
-	r.Read, ifupdated = fdLongPfx(r.Read, file)
+	r.Read, ifupdated = findLongestPrefix(r.Read, file)
 	return ifupdated
 }
 
-func (r *Rule) updExec(cmd string) bool {
+func (r *Rule) updateExec(cmd string) bool {
 	bin := strings.Split(cmd, " ")[0]
 	arg := strings.Join(strings.Split(cmd, " ")[1:], " ")
 	ifupdated := false
@@ -48,15 +48,15 @@ func (r *Rule) updExec(cmd string) bool {
 			}
 		}
 		// no matched rule, start to find min common prefix
-		r.Exec[bin], ifupdated = fdLongPfx(r.Exec[bin], arg)
+		r.Exec[bin], ifupdated = findLongestPrefix(r.Exec[bin], arg)
 	} else {
 		r.Exec[bin] = []string{}
-		r.Exec[bin], ifupdated = fdLongPfx(r.Exec[bin], arg)
+		r.Exec[bin], ifupdated = findLongestPrefix(r.Exec[bin], arg)
 	}
 	return ifupdated
 }
 
-func (r *Rule) updConn(addr string) bool {
+func (r *Rule) updateConnect(addr string) bool {
 	for _, s := range r.Conn {
 		if addr == s {
 			return false
@@ -94,7 +94,7 @@ func (r *Rule) matchConnectionRule(addr string) float64 {
 	return 0.5
 }
 
-func fdLongPfx(rules []string, obj string) ([]string, bool) {
+func findLongestPrefix(rules []string, obj string) ([]string, bool) {
 	resultRules := rules
 	if len(obj) == 0 {
 		return resultRules, false
