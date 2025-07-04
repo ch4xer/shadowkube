@@ -1,5 +1,7 @@
 # ShadowKbue
 
+This is the prototype of cluster protection system based on shadow honeypot and behavior baseline, once the container behavior deviates from the baseline, the system will convert the infected node and container into honeypot and connect them to a pre-built shadow cluster.
+
 ## Prerequirement
 
 1. Prepare two Kubernetes cluster, for convenient, both clusters were setup with virtual machines of VirtualBox.
